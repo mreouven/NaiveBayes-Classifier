@@ -2,10 +2,12 @@
 import Tkinter as tk
 import ttk
 import Tkconstants, tkFileDialog
-import os
+import attributes
 import pickle
 import tkFileDialog
 from FileDialog import LoadFileDialog
+
+global data
 
 class FilenameEntry(tk.Frame):
     """a widget for displaying a input edit box and a browser to choose a file """
@@ -20,15 +22,12 @@ class FilenameEntry(tk.Frame):
         file = LoadFileDialog(self).go(pattern='*')
         if file:
             self.filename.set(file)
-            
     def choiceDirectory(self):
         self.dir = tkFileDialog.askdirectory()
         if len(self.dir) > 0:
             self.filename.set(self.dir)
-    
     def get(self):
         return self.filename.get()
-
     def put(self,val):
         self.filename.set(val)
 
@@ -64,12 +63,16 @@ class Example(tk.Frame):
         self.binSelection.pack(side="top", fill="x")
         self.buildButton.pack( padx=3,pady=3)
         self.clasify.pack( padx=3,pady=3)
+        
     def build(self):
+        data=attributes.readDATA(str(self.filename.get()))
+        print data.dataex.keys()
         print(self.filename.get()+"\n"+self.binSelection.get())
     def choiceDirectory(self):
         self.rep = tkFileDialog.askdirectory()
         if len(rep) > 0:
             self.resultLabel.configure(text=str(rep))
+            
 
 
 
