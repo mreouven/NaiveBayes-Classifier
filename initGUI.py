@@ -2,11 +2,11 @@
 import Tkinter as tk
 import ttk
 import Tkconstants, tkFileDialog
-import attributes
 import pickle
 import tkFileDialog
 from FileDialog import LoadFileDialog
 
+import attributes
 global data
 
 class FilenameEntry(tk.Frame):
@@ -63,10 +63,11 @@ class Example(tk.Frame):
         self.binSelection.pack(side="top", fill="x")
         self.buildButton.pack( padx=3,pady=3)
         self.clasify.pack( padx=3,pady=3)
+
+
         
     def build(self):
         data=attributes.readDATA(str(self.filename.get()))
-        print data.dataex.keys()
         print(self.filename.get()+"\n"+self.binSelection.get())
     def choiceDirectory(self):
         self.rep = tkFileDialog.askdirectory()

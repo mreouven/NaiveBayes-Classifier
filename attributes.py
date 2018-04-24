@@ -1,5 +1,6 @@
 import os
 import csv
+import dataCheck
 
 class readDATA:
     def __init__(self,chemin):
@@ -47,9 +48,12 @@ class readDATA:
     def attachement(self):
         if self.li and self.dataex:
             for element in self.li:
+                #self.dataex[element.pop(0)].append([1,3])
                 self.dataex[element.pop(0)].append(element)
         print('Attachement success')
-                
-
-
-
+        self.chekdata()
+    def chekdata(self):
+        datan=dataCheck.DataCheck(self.dataex)
+        self.dataex=datan.data
+        
+da=readDATA('C:/Users/mreou/Documents/GitHub/Naive-Bayes')
