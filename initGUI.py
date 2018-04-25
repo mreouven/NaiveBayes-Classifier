@@ -2,10 +2,12 @@
 import Tkinter as tk
 import ttk
 import Tkconstants, tkFileDialog
-import os
 import pickle
 import tkFileDialog
 from FileDialog import LoadFileDialog
+
+import attributes
+global data
 
 class FilenameEntry(tk.Frame):
     """a widget for displaying a input edit box and a browser to choose a file """
@@ -20,15 +22,12 @@ class FilenameEntry(tk.Frame):
         file = LoadFileDialog(self).go(pattern='*')
         if file:
             self.filename.set(file)
-            
     def choiceDirectory(self):
         self.dir = tkFileDialog.askdirectory()
         if len(self.dir) > 0:
             self.filename.set(self.dir)
-    
     def get(self):
         return self.filename.get()
-
     def put(self,val):
         self.filename.set(val)
 
@@ -53,8 +52,8 @@ class Example(tk.Frame):
         #frame editation
         tk.Frame.__init__(self, parent, bg='white',relief="raised", bd=2,width=100,height=200)
         #object creation
-        self.filename = FilenameEntry(self, "Source filename: ")
-        self.binSelection=BinSelect(self, "enter nb of bin: ")
+        self.filename = FilenameEntry(self, "Directory Path: ")
+        self.binSelection=BinSelect(self, "Discretization Bins: ")
         self.buildButton = tk.Button(self,borderwidth=2, text="Build",width=10, command=self.build)
         self.clasify = tk.Button(self,borderwidth=2, text="Classify",width=10, command=self.choiceDirectory)
         tk.Label(self, text='Naive Bayes Classifier', font=('Helvetica', 12, 'italic bold'),background='black', foreground='white').pack(side="top", expand="no", fill="x")
@@ -64,12 +63,17 @@ class Example(tk.Frame):
         self.binSelection.pack(side="top", fill="x")
         self.buildButton.pack( padx=3,pady=3)
         self.clasify.pack( padx=3,pady=3)
+
+
+        
     def build(self):
+        data=attributes.readDATA(str(self.filename.get()))
         print(self.filename.get()+"\n"+self.binSelection.get())
     def choiceDirectory(self):
         self.rep = tkFileDialog.askdirectory()
         if len(rep) > 0:
             self.resultLabel.configure(text=str(rep))
+            
 
 
 
