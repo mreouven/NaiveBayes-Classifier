@@ -1,6 +1,7 @@
 import os
 import csv
 import dataCheck
+import naivebayes
 
 class readDATA:
     def __init__(self,chemin):
@@ -57,3 +58,4 @@ class readDATA:
         self.dataex=datan.data
         
 da=readDATA('C:/Users/mreou/Documents/GitHub/Naive-Bayes')
+n=naivebayes.NaiveBayes(da.dataex)

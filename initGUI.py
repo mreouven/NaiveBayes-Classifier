@@ -52,8 +52,8 @@ class Example(tk.Frame):
         #frame editation
         tk.Frame.__init__(self, parent, bg='white',relief="raised", bd=2,width=100,height=200)
         #object creation
-        self.filename = FilenameEntry(self, "Source filename: ")
-        self.binSelection=BinSelect(self, "enter nb of bin: ")
+        self.filename = FilenameEntry(self, "Directory Path: ")
+        self.binSelection=BinSelect(self, "Discretization Bins: ")
         self.buildButton = tk.Button(self,borderwidth=2, text="Build",width=10, command=self.build)
         self.clasify = tk.Button(self,borderwidth=2, text="Classify",width=10, command=self.choiceDirectory)
         tk.Label(self, text='Naive Bayes Classifier', font=('Helvetica', 12, 'italic bold'),background='black', foreground='white').pack(side="top", expand="no", fill="x")
