@@ -1,6 +1,7 @@
 class DataCheck():
-    def __init__(self,data):
+    def __init__(self,data,dis_bin):
         self.data=data
+        self.dis_bin=dis_bin
         self.not_numeric()
         self.is_numeric()
 

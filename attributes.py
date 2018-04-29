@@ -54,8 +54,8 @@ class readDATA:
         print('Attachement success')
         self.chekdata()
     def chekdata(self):
-        datan=dataCheck.DataCheck(self.dataex)
+        datan=dataCheck.DataCheck(self.dataex,3)
         self.dataex=datan.data
         
 da=readDATA('C:/Users/mreou/Documents/GitHub/Naive-Bayes')
-n=naivebayes.NaiveBayes(da.dataex)
+n=naivebayes.NaiveBayes(da.dataex,3)
